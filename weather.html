@@ -1,0 +1,87 @@
+<meta charset="utf-8">
+<script src="library/jquery.js"></script>
+<style>
+
+    #wrapper {
+        height: 8em !important;
+         background: linear-gradient(to bottom, #21d4fd 0%, #14afff 5%);
+         width: 15em;
+         display:flex;
+         align-items:center;
+    }
+    #weather-clock {
+        width: 83%;
+        height: 83%;
+        /* border: solid #FFF 3px; */
+        margin: auto;
+        border-radius: 10px;
+        position: relative;
+        background: linear-gradient(to bottom, #f5f5f5 0%, #b9b9b9 99%);
+        box-shadow: 0 0 10px #666;
+    }
+    #weather-clock-time-wrapper {
+        text-align: center;
+        height: 60%;
+        width: 100%;
+        margin: -8px auto;
+        
+    }
+    #weather-clock-time-wrapper .hour, #weather-clock-time-wrapper .minute {
+        display: inline-block;
+        height: 100%;
+        width: 40%;
+        
+        border-radius: 10px;
+        background: linear-gradient(to bottom, #cbcbcb 0%, #555 99%);        
+        font-size: 2em;
+        line-height:calc(4em * .8 * .6);
+        color: rgba(255,255,255,.98);
+        text-shadow: 1px 1px 1px #000;
+        z-index: 3;
+    
+    }
+    #weather-clock-weather {
+        z-index: 5;
+        width: 7em;
+        height: 5em;
+        margin: 4% auto;
+        background: url(css/image/cloud.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+    }
+    #weather-clock-detail {
+        width: 85%;
+        height: 50%;
+        position: relative;
+        margin: -43% auto;
+    }
+
+    #weather-clock-city,  #weather-clock-temp{
+        display: inline-block;
+        padding: 5px 0 0 0;
+        margin-left: -8px;
+        color: white;
+        text-shadow: 2px 2px 3px rgba(60,60,60,.7);
+    }
+    #weather-clock-temp {
+        float: right;
+       
+    }
+
+    
+</style>
+<div id="wrapper">
+    <div id="weather-clock">
+        <div id="weather-clock-time-wrapper">
+            <div class="hour">3</div>
+            <div class="minute">15</div>
+        </div>
+        <div id="weather-clock-weather"></div>
+        <div id="weather-clock-detail">
+            <div id="weather-clock-city">中和區</div>
+            <div id="weather-clock-temp">30℃</div>
+        </div>
+    </div>
+</div>

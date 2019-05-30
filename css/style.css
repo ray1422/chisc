@@ -1,0 +1,345 @@
+a {
+    cursor: pointer;
+}
+
+.blur {
+    filter: blur(5px) ;
+}
+.gray{
+    filter: grayscale(1) brightness(80%);
+}
+
+
+
+#floating-window {
+    display: none;
+    position: fixed;
+    width: 50vw;
+    height: 20em;
+    min-height: 60vh;
+    
+
+
+    top: 8em;
+    left: 30vw;
+    padding: 1em;
+    z-index: 48763;
+    transition-duration: .87s;
+    overflow-x:  hidden;
+    overflow-y:  hidden;
+    box-sizing: border-box;
+    max-height: 75vh;
+    background: rgba(255, 255,255, .9);
+    box-shadow: 0 0 13px 15px rgba(255, 255,255, .9);
+}
+@media (max-width:600px){
+    #floating-window {
+        width: 90vw;
+        left: 5vw;
+        box-shadow:0 0 13px 5px rgba(255, 255,255, .9);
+       
+        top: 10vh;
+    }
+}
+
+body, input {
+    margin: 0;
+    overflow: hidden;
+    font-family: "Noto Sans Mono CJK TC Regular", "微軟正黑體";
+    overflow-x: hidden;
+    background: #eee;
+
+}
+#wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    transition-duration: 1s;
+}
+
+#header {
+    position: relative;
+    width: 100vw;
+    height: 3.5em;
+    margin: 0;
+    background: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+    box-shadow: 0 2px 5px rgba(160, 160, 160, .7);
+    display:flex;
+    align-items:center;
+    z-index:3;
+
+
+}
+#header > div {
+    display: flex;
+    margin: 2% auto;
+    color: #FFF;
+}
+
+#header #buttons-left {
+    height: 80%;
+    line-height: 100%;
+    margin: 0 10px 0 .8em;
+    display:flex;
+    overflow: hidden;
+    align-items:center;
+    font-size: 1.4em;
+    color: #FFF;
+
+}
+
+#header #buttons-right {
+    height: 80%;
+    line-height: 100%;
+    margin: 0 .8em 0 10px;
+    display:flex;
+    overflow: hidden;
+    align-items:center;
+    font-size: 1.4em;
+    color: #FFF;
+
+}
+
+
+#header #buttons-left a, #header #buttons-right a {
+    color: #FFF;
+
+}
+
+/*
+#header #header-title {
+    left: calc(50vw - 7em);
+    width: 14em;
+}
+*/
+
+#header #fullscreen {
+    display:none;
+}
+@media (max-width:600px){
+    #header #header-title {
+        font-size: .85em;
+    }
+    #header #fullscreen {
+        display:block;
+    }
+}
+
+#side-menu {
+    position: fixed;
+    width: 20em;
+    left: -20em;
+    top: 3.5em;
+    float:left;
+    opacity: 10;
+    height: 100vh;
+    background: #FFF;
+
+    opacity: .1;
+    z-index: 2;
+    transition-property: background;
+    background: none;
+}
+#side-menu.menu-opened{
+    width: 15em;
+    left: 0;
+    top: 3.5em;
+    opacity: 1;
+    
+    
+}
+
+
+#side-menu .side-menu-element {
+
+    left: -20em;
+    position: relative;
+    cursor: pointer;
+    height: 1.5em;
+    display:flex;
+    align-items:center;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    transition-duration: .87s;
+    overflow:hidden;
+    padding-left: 15px;
+    border-bottom: none;
+    margin-top: -1px;
+    background: linear-gradient(to bottom, #21d4fd 0%, #14afff 100%);
+    font-size: .95em;
+    padding: 10px;
+
+    box-shadow: 5px 0 5px -1px rgba(160,160,160,.6);
+
+}
+.side-menu-element:last-child {
+    height: 100vh !important;
+}
+
+
+#side-menu .side-menu-element.menu-opened{
+    left:0;
+    top:0;
+}
+
+#side-menu-clock-wrapper {
+    height: 8em !important;
+    background: linear-gradient(to bottom, #21d4fd 0%, #14afff 5%);
+    padding: 10px 10px 2em 10px !important;
+}
+
+
+
+
+#side-menu .side-menu-element svg{
+    margin-right: 10px;
+    font-size: 1.3em;
+    width: .75em;
+}
+
+
+#side-menu .side-menu-element a {
+    display:flex;
+    align-items:center;
+    text-decoration: none;
+    color: #FFF;
+   
+}
+    
+
+#content {
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 3.5em);
+    background: #eee;
+    padding-left: 0em;
+    transition-duration: .87s;
+    word-break: break-all;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+}
+
+
+
+.loading{
+    filter: blur(100px) brightness(95%) grayscale(1);
+    transition-duration: .3s;
+}
+
+@media (max-width: 600px){
+    .loading{
+        filter: unset;
+        opacity: 0 !important;
+        transition-duration: .3s;
+    }
+}
+
+
+@media (min-width: 600px) {
+    #content.menu-opened {
+
+        padding-left: 18em;
+        width: calc(100vw - 18em);
+
+    }
+}
+
+@media (max-width: 600px) {
+    #content.menu-opened {
+
+        padding-left: 18em;
+        
+
+    }
+}
+
+#content .card {
+
+    max-width: 54em;
+    margin: 2.5em auto;
+    padding: .3em 3em 5em 3em;
+    background: #FFF;
+  
+    box-shadow: 0 0 10px 6px #FFF, 13px 13px 10px rgba(220, 220, 220, .8);
+
+}
+
+@media (max-width: 600px) {
+    #content .card {
+        margin: 2.3em auto;  
+        width: 80vw;
+        padding: .6em 1.3em 1em 1.5em;
+    }
+}
+
+.card header h2 {
+
+    background: linear-gradient(-20deg, #b721ff -10%, #21d4fd 80%);
+    display: inline;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    line-height: 100%;
+    
+}
+
+
+@media (max-width: 600px) {
+
+    .card header h2 {
+        font-size: 1.2em;
+    }
+    .card article {
+        font-size: 1.1em;
+    }
+    
+}
+.city.inline-button {
+    font-size: 1.1em;
+    margin: .4em .5em;
+    padding: .0em .3em;
+    border: none;
+    background: #14afff;
+    box-shadow: 0 0 3px 4px #14afff, 4px 4px 4px rgba(160, 160, 160, .6);
+    border-radius: 6px;
+    color: #fff;
+    outline: none;
+    transition-duration: .5s;
+    cursor: pointer;
+
+}
+.city.inline-button:hover {
+    background: #ffbc14;
+    box-shadow: 0 0 3px 4px #ffbc14, 4px 4px 4px rgba(160, 160, 160, .6);
+
+}
+
+button.city.inline-button {
+    background: #ff1122;
+    box-shadow: 0 0 3px 4px #ff1122, 4px 4px 4px rgba(160, 160, 160, .6);
+
+}
+
+button.city.inline-button:hover {
+    background: #ff8686;
+    box-shadow: 0 0 3px 4px #ff8686, 4px 4px 4px rgba(160, 160, 160, .6);
+
+}
+
+#weather-select-city {
+    max-height: 85%;
+    min-height: 70%;
+    overflow: auto;
+    top: 0;
+}
+
+#weather-select-cancel {
+    height: calc(15% - 1em);
+    margin: 1em auto;
+    
+}
