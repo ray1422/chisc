@@ -23,7 +23,7 @@
 
     if(!$flag){
         
-        $url = "http://opendata.cwb.gov.tw/opendataapi?dataid=F-D0047-069&authorizationkey=<YOUR_KEY>";
+        $url = "https://opendata.cwb.gov.tw/opendataapi?dataid=F-D0047-069&authorizationkey=<YOUR_KEY>";
     
         $ch = curl_init();
         //curl_setopt可以設定curl參數
